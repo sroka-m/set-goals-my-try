@@ -1,6 +1,6 @@
 import "./App.css";
 import Form from "./Form";
-import Goal from "./Goal";
+import GoalList from "./GoalList";
 import { useState } from "react";
 
 function App() {
@@ -25,15 +25,7 @@ function App() {
     });
     console.log(goals);
   };
-  let content = (
-    <div>
-      {goals.map((goalItem) => (
-        <div className="goal" key={goalItem.id}>
-          <Goal goal={goalItem} deleteGoals={deleteGoals} />
-        </div>
-      ))}
-    </div>
-  );
+  let content = <GoalList goals={goals} deleteGoals={deleteGoals} />;
   if (goals.length === 0) {
     content = (
       <p style={{ textAlign: "center" }}>No goals found. Maybe add one?</p>

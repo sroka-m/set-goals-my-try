@@ -1,6 +1,4 @@
-const Goal = (props) => {
-  console.log(props.goal.id);
-
+const GoalItem = (props) => {
   return (
     <div>
       <p>{props.goal.text}</p>
@@ -14,5 +12,4 @@ const Goal = (props) => {
     </div>
   );
 };
-
-export default Goal;
+export default GoalItem;
