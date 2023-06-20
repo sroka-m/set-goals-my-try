@@ -1,16 +1,28 @@
 import { useState } from "react";
+import "./Form.css";
 
 const Form = (props) => {
   const [inputGoal, setInputGoal] = useState("");
-  console.log(inputGoal);
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (inputGoal.trim().length === 0) {
+      setIsInvalidInput(true);
+      return;
+    }
     props.getGoal(inputGoal);
     setInputGoal("");
   };
+
   const handleOnChange = (e) => {
     setInputGoal(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      setIsInvalidInput(false);
+    }
+    console.log(isInvalidInput);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -18,6 +30,7 @@ const Form = (props) => {
       </div>
       <div>
         <input
+          className={isInvalidInput ? "invalid" : ""}
           type="text"
           name="goal"
           id="goal"
